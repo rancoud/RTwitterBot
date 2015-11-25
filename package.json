@@ -1,0 +1,22 @@
+{
+  "name": "rtbot",
+  "version": "1.0.0",
+  "description": "Bot for twitter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rancoud/RTBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rancoud/RTBot/issues"
+  },
+  "homepage": "https://github.com/rancoud/RTBot#readme",
+  "devDependencies": {
+    "twitter": "^1.2.5"
+  }
+}
