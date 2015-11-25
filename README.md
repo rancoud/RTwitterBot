@@ -1,0 +1,2 @@
+# RTBot
+Bot for twitter
