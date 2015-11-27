@@ -5,5 +5,13 @@ Bot for twitter
 * connexion
 * read twitter
 * push message
+* read streaming
 * load modules
-* cron system
+* have some utils
+  * logger file
+  * function hasLink
+  * function hasMedia
+* modules
+  * simple read
+  * simple push
+  * read stream, send summary every X seconds
