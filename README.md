@@ -15,3 +15,5 @@ Bot for twitter
   * simple read
   * simple push
   * read stream, send summary every X seconds
+* save rate limit for each request
+* choose a application (first by default)
