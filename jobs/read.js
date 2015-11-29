@@ -1,12 +1,13 @@
 var client = getTwitterApp(undefined, ['statuses/user_timeline']);
-console.log(client);
-return;
 var params = {screen_name: options[0]};
-client.get('statuses/user_timelineaa', params, function(error, tweets, response){
+client.get('statuses/user_timeline', params, function(error, tweets, response){
   if (!error) {
-    console.log(tweets);
+    for (var i = 0; i < tweets.length; i++) {
+      console.log(tweets[i].text);
+    }
   }
   else {
     logTwitterError(error);
+    throw error;
   }
 });

@@ -10,17 +10,20 @@ global.getClientRateLimit = function getRateLimit(client, callback) {
   });
 };
 
-global.getRateLimitByName = function saveRateLimit(name) {
+global.getRateLimitByName = function saveRateLimit(name, forceRefresh) {
   // search in folder rate_limit_cache
   var rateLimitJson = null;
   var expirationFileTime = 20 * 60; // 20 minutes in seconds
+  var forceRefresh = forceRefresh || true;
+
   try {
     var rateLimitFileStats = fs.statSync('./rate_limit_cache/' + name + '.json');
     var _date = new Date();
     _date.setSeconds(_date.getSeconds() - expirationFileTime);
     // if file is still fresh, we can read and return it
-    if(rateLimitFileStats.mtime.getTime() > _date.getTime()) {
+    if(rateLimitFileStats.mtime.getTime() > _date.getTime() || forceRefresh === false) {
       rateLimitJson = fs.readFileSync('./rate_limit_cache/' + name + '.json', 'utf8');
+      rateLimitJson = JSON.parse(rateLimitJson);
     }
   } catch (e) {
     if(e.errno !== -4058) {

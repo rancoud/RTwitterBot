@@ -1,5 +1,8 @@
-client.post('statuses/update', {status: 'NodeJS test'},  function(error, tweet, response){
-  if(error) throw error;
+var client = getTwitterApp(undefined, ['statuses/update']);
+client.post('statuses/update', {status: options[0]},  function(error, tweet, response) {
+  if(error) {
+    logTwitterError(error);
+    throw error;
+  }
   console.log(tweet);  // Tweet body.
-  console.log(response);  // Raw response object.
 });
