@@ -36,7 +36,7 @@ if(job.length < 1) {
   process.exit(9);
 }
 
-// get twitter app
+// get twitter app configurations and Twitter module
 confTwitterApp = require('./conf.twitter.app.js');
 Twitter = require('twitter');
 
@@ -54,8 +54,10 @@ for (var i = 0; i < confTwitterApp.length; i++) {
   }
   _names.push(confTwitterApp[i].name);
 
+  // populate rate_limit_cache folder if empty
   var _json = getRateLimitByName(confTwitterApp[i].name);
   if(_json === null) {
+    log.info('RTBot', 'Update rate_limit_cache json for %s', confTwitterApp[i].name);
     getClientRateLimit(new Twitter(confTwitterApp[i]), function(name) {
       return function(json) {
         saveRateLimitByName(name, JSON.stringify(json));
@@ -69,33 +71,28 @@ for (var i = 0; i < confTwitterApp.length; i++) {
   }
   else {
     ready--;
+    if(ready === 0) {
+      doJob();
+    }
   }
 }
 
-// check rate limit cache for each app
-/*getClientRateLimit()
-
-
-client = getTwitterApp(undefined, ["statuses/user_timeline"]);*/
-
-/*
-// init twitter app
-client = new Twitter(confTwitterApp);
-getClientRateLimit(client, function(rateLimitJson){
-  console.log(rateLimitJson);
-});return;
-*/
 function doJob() {
   log.info('RTBot', 'Search Job: %s', job);
   // search job in folder jobs
-  fs.readdir('./jobs', function(err, files){
-    var f, l = files.length;
+  fs.readdir('./jobs', function(err, files) {
+    var f, l = files.length, found = false;
     for (var i = 0; i < l; i++) {
       if (files[i] === job + '.js') {
-        log.info('RTBot', 'Load job: %s', files[i]);
+        log.info('RTBot', 'Load job file: %s', files[i]);
+        found = true;
         require('./jobs/' + files[i]);
         break;
       }
+    }
+
+    if(found === false) {
+      log.error('RTBot', 'Job %s not found', job);
     }
   });
 };
