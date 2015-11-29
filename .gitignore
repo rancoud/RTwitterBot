@@ -27,3 +27,4 @@ build/Release
 node_modules
 
 conf.twitter.app.js
+rate_limit_cache/*.js
