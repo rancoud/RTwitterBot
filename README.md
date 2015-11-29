@@ -4,7 +4,8 @@ Bot for twitter
 ## Setup
 1. Create Twitter application
 2. Rename conf.twitter.app.sample.js to conf.twitter.app.js
-3. Create your job in folder jobs
+3. Fill the file with a name and consumer_key consumer_secret access_token_key access_token_secret
+4. Create your job in folder jobs
 
 ## Example
 Once your twitter application created you can run the read job.
@@ -21,14 +22,5 @@ node app.js read "livecodingtv"
 3. Documentation for the [Twitter Client used here](https://www.npmjs.com/package/twitter)
 
 ## TODO
-* connexion
-* have some utils
-  * function hasLink
-  * function hasMedia
-  * get user
-  * get last 10 tweets
-  * get avatar
-* modules
-  * get last tweet
-  * push a tweet on profile
-  * stream
+* test models
+* add private jobs (no push on github)

@@ -4,5 +4,5 @@ client.post('statuses/update', {status: options[0]},  function(error, tweet, res
     logTwitterError(error);
     throw error;
   }
-  console.log(tweet);  // Tweet body.
+  console.log(tweet);
 });

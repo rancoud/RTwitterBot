@@ -1,12 +1,13 @@
 var client = getTwitterApp();
-client.stream('statuses/filter', {track: options[0], reply: false}, function(stream) {
+client.stream('statuses/filter', {track: options[0]}, function(stream) {
   stream.on('data', function(tweet) {
     if(tweet.retweeted_status === undefined) {
-      console.log(tweet.text);
+      var user = new User(tweet);
+      console.log(user.getName().green + ' : ' + tweet.text + '\n');
     }
   });
 
   stream.on('error', function(error) {
-    logTwitterError(error);
+    console.log(error);
   });
 });

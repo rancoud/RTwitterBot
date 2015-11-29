@@ -28,3 +28,5 @@ node_modules
 
 conf.twitter.app.js
 rate_limit_cache/*.json
+private_jobs/*
+!private_jobs/placeholder

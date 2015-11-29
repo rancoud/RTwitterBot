@@ -3,7 +3,13 @@ var params = {screen_name: options[0]};
 client.get('statuses/user_timeline', params, function(error, tweets, response){
   if (!error) {
     for (var i = 0; i < tweets.length; i++) {
-      console.log(tweets[i].text);
+      /*
+      var t = new Tweet(tweets[i]);
+      console.log(t.getMedias());
+      console.log(t.getHashtags());
+      console.log(util.inspect(tweets[i], { depth: null }));
+      */
+      console.log(tweets[i].text + '\n');
     }
   }
   else {

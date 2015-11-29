@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rancoud/RTBot#readme",
   "devDependencies": {
+    "colors": "^1.1.2",
     "npmlog": "^2.0.0",
     "twitter": "^1.2.5"
   }

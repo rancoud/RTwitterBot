@@ -1,4 +1,6 @@
 // require all files in utils folder
+colors = require('colors');
+util = require('util');
 fs = require('fs');
 fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
@@ -79,20 +81,38 @@ for (var i = 0; i < confTwitterApp.length; i++) {
 
 function doJob() {
   log.info('RTBot', 'Search Job: %s', job);
-  // search job in folder jobs
-  fs.readdir('./jobs', function(err, files) {
+  // search job in private folder jobs
+  fs.readdir('./private_jobs', function(err, files) {
     var f, l = files.length, found = false;
     for (var i = 0; i < l; i++) {
       if (files[i] === job + '.js') {
         log.info('RTBot', 'Load job file: %s', files[i]);
         found = true;
-        require('./jobs/' + files[i]);
+        require('./private_jobs/' + files[i]);
         break;
       }
     }
 
-    if(found === false) {
-      log.error('RTBot', 'Job %s not found', job);
+    if(found === true) {
+      return;
     }
+
+    // search job in folder jobs
+    fs.readdir('./jobs', function(err, files) {
+      var f, l = files.length, found = false;
+      for (var i = 0; i < l; i++) {
+        if (files[i] === job + '.js') {
+          log.info('RTBot', 'Load job file: %s', files[i]);
+          found = true;
+          require('./jobs/' + files[i]);
+          break;
+        }
+      }
+
+      if(found === false) {
+        log.error('RTBot', 'Job %s not found', job);
+      }
+    });
+
   });
 };
