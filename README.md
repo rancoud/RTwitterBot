@@ -23,4 +23,4 @@ node app.js read "livecodingtv"
 
 ## TODO
 * test models
-* add private jobs (no push on github)
+* save / show / kill all jobs

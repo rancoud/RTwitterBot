@@ -10,6 +10,11 @@ client.get('statuses/user_timeline', params, function(error, tweets, response){
       console.log(util.inspect(tweets[i], { depth: null }));
       */
       console.log(tweets[i].text + '\n');
+      var t = new Tweet(tweets[i]);
+      var _medias = t.getMedias();
+      for (var j = 0; j < _medias.length; j++) {
+        download(_medias[j].url, './medias/' + _medias[j].name);
+      }
     }
   }
   else {
