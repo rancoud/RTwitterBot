@@ -2,7 +2,7 @@
   "name": "rtbot",
   "version": "1.0.0",
   "description": "Bot for twitter",
-  "main": "app.js",
+  "main": "job.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

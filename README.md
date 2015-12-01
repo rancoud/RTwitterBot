@@ -10,7 +10,7 @@ Bot for twitter
 ## Example
 Once your twitter application created you can run the read job.
 ```
-node app.js read "livecodingtv"
+node job.js read "livecodingtv"
 ```
 
 ## How to write job
@@ -21,6 +21,19 @@ node app.js read "livecodingtv"
   * endpoints (array - optionnal) : return an available Twitter app which can use thoses endpoints (rate limit)
 3. Documentation for the [Twitter Client used here](https://www.npmjs.com/package/twitter)
 
+## PID watcher and killer
+Jobs'list running (pid + job + options)
+```
+node pid.js
+```
+Kill a job
+```
+node pid.js kill {pidId}
+```
+Kill all jobs
+```
+node pid.js kill all
+```
+
 ## TODO
 * test models
-* save / show / kill all jobs
