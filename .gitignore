@@ -32,3 +32,5 @@ private_jobs/*
 !private_jobs/placeholder
 medias/*
 !medias/placeholder
+pid/*
+!pid/placeholder

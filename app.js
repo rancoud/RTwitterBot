@@ -18,6 +18,8 @@ log = require('npmlog');
 log.info('RTBot', 'Init');
 process.on('exit', function() {
   log.info('RTBot', 'End');
+  // remove process pid
+  fs.unlinkSync('./pids/' + process.pid + '.pid');
 });
 
 // get job + options
@@ -86,6 +88,8 @@ function doJob() {
     var f, l = files.length, found = false;
     for (var i = 0; i < l; i++) {
       if (files[i] === job + '.js') {
+        // save pid
+        fs.writeFileSync('./pids/' + process.pid + '.pid', job + ' ' + options.join(' '), 'utf-8');
         log.info('RTBot', 'Load job file: %s', files[i]);
         found = true;
         require('./private_jobs/' + files[i]);
@@ -102,6 +106,8 @@ function doJob() {
       var f, l = files.length, found = false;
       for (var i = 0; i < l; i++) {
         if (files[i] === job + '.js') {
+          // save pid
+          fs.writeFileSync('./pids/' + process.pid + '.pid', job + ' ' + options.join(' '), 'utf-8');
           log.info('RTBot', 'Load job file: %s', files[i]);
           found = true;
           require('./jobs/' + files[i]);
