@@ -4,7 +4,7 @@ Bot for twitter
 ## Setup
 1. Create Twitter application
 2. Rename conf.twitter.app.sample.js to conf.twitter.app.js
-3. Fill the file with a name and consumer_key consumer_secret access_token_key access_token_secret
+3. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret**
 4. Create your job in folder jobs
 
 ## Example
@@ -37,3 +37,4 @@ node pid.js kill all
 
 ## TODO
 * test models
+* add small job (favorite, list, etc...)
