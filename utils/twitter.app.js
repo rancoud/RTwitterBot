@@ -24,7 +24,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
       for (var j = 0; j < arrayEndpoints.length; j++) {
         var _parts = arrayEndpoints[j].split('/');
         var _endpoint = _rateLimit.resources[_parts[0]]['/'+arrayEndpoints[j]];
-        if(_endpoint.remaining > 0) {
+        if(_endpoint === undefined || _endpoint.remaining > 0) {
           matches[i]++;
         }
       }
