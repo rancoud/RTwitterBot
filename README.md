@@ -1,4 +1,4 @@
-# RTBot
+# RTwitterBot
 Bot for twitter
 
 ## Setup
