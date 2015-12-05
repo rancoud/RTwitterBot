@@ -1,5 +1,5 @@
 global.download = function download(url, dest, callback) {
-  log.info('RTBot', 'Download %s to %s', url, dest);
+  log.info('RTwitterBot', 'Download %s to %s', url, dest);
   var wrapper;
   if(url.substr(0,5) === "https") {
     wrapper = require('https');
@@ -8,7 +8,7 @@ global.download = function download(url, dest, callback) {
     wrapper = require('http');
   }
   else {
-    log.error('RTBot', 'Url not supported for donwload: %s', url);
+    log.error('RTwitterBot', 'Url not supported for donwload: %s', url);
     return;
   }
   var fs = require('fs');

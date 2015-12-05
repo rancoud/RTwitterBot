@@ -15,9 +15,9 @@ options = [];
 
 // init logger
 log = require('npmlog');
-log.info('RTBot', 'Init');
+log.info('RTwitterBot', 'Init');
 process.on('exit', function() {
-  log.info('RTBot', 'End');
+  log.info('RTwitterBot', 'End');
   // remove process pid
   fs.unlinkSync('./pids/' + process.pid + '.pid');
 });
@@ -36,7 +36,7 @@ process.argv.forEach(function (val, index, array) {
 
 // if no job kill process
 if(job.length < 1) {
-  log.error('RTBot', 'No job found');
+  log.error('RTwitterBot', 'No job found');
   process.exit(9);
 }
 
@@ -46,14 +46,14 @@ Twitter = require('twitter');
 
 // check confTwitterApp > not empty AND no duplicate name
 if(confTwitterApp.length === 0) {
-  log.error('RTBot', 'File conf.twitter.app.js is empty');
+  log.error('RTwitterBot', 'File conf.twitter.app.js is empty');
   process.exit(1);
 }
 var _names = [];
 var ready = confTwitterApp.length;
 for (var i = 0; i < confTwitterApp.length; i++) {
   if(_names.indexOf(confTwitterApp[i].name) !== -1) {
-    log.error('RTBot', 'Duplicate names in file conf.twitter.app.js');
+    log.error('RTwitterBot', 'Duplicate names in file conf.twitter.app.js');
     process.exit(1);
   }
   _names.push(confTwitterApp[i].name);
@@ -61,7 +61,7 @@ for (var i = 0; i < confTwitterApp.length; i++) {
   // populate rate_limit_cache folder if empty
   var _json = getRateLimitByName(confTwitterApp[i].name);
   if(_json === null) {
-    log.info('RTBot', 'Update rate_limit_cache json for %s', confTwitterApp[i].name);
+    log.info('RTwitterBot', 'Update rate_limit_cache json for %s', confTwitterApp[i].name);
     getClientRateLimit(new Twitter(confTwitterApp[i]), function(name) {
       return function(json) {
         saveRateLimitByName(name, JSON.stringify(json));
@@ -82,7 +82,7 @@ for (var i = 0; i < confTwitterApp.length; i++) {
 }
 
 function doJob() {
-  log.info('RTBot', 'Search Job: %s', job);
+  log.info('RTwitterBot', 'Search Job: %s', job);
   // search job in private folder jobs
   fs.readdir('./private_jobs', function(err, files) {
     var f, l = files.length, found = false;
@@ -90,7 +90,7 @@ function doJob() {
       if (files[i] === job + '.js') {
         // save pid
         fs.writeFileSync('./pids/' + process.pid + '.pid', job + ' ' + options.join(' '), 'utf-8');
-        log.info('RTBot', 'Load job file: %s', files[i]);
+        log.info('RTwitterBot', 'Load job file: %s', files[i]);
         found = true;
         require('./private_jobs/' + files[i]);
         break;
@@ -108,7 +108,7 @@ function doJob() {
         if (files[i] === job + '.js') {
           // save pid
           fs.writeFileSync('./pids/' + process.pid + '.pid', job + ' ' + options.join(' '), 'utf-8');
-          log.info('RTBot', 'Load job file: %s', files[i]);
+          log.info('RTwitterBot', 'Load job file: %s', files[i]);
           found = true;
           require('./jobs/' + files[i]);
           break;
@@ -116,7 +116,7 @@ function doJob() {
       }
 
       if(found === false) {
-        log.error('RTBot', 'Job %s not found', job);
+        log.error('RTwitterBot', 'Job %s not found', job);
       }
     });
 

@@ -1,5 +1,5 @@
 {
-  "name": "rtbot",
+  "name": "rtwitterbot",
   "version": "1.0.0",
   "description": "Bot for twitter",
   "main": "job.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rancoud/RTBot.git"
+    "url": "git+https://github.com/rancoud/RTwitterBot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rancoud/RTBot/issues"
+    "url": "https://github.com/rancoud/RTwitterBot/issues"
   },
-  "homepage": "https://github.com/rancoud/RTBot#readme",
+  "homepage": "https://github.com/rancoud/RTwitterBot#readme",
   "devDependencies": {
     "colors": "^1.1.2",
     "npmlog": "^2.0.0",

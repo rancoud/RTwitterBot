@@ -38,3 +38,4 @@ node pid.js kill all
 ## TODO
 * test models
 * add small job (favorite, list, etc...)
+* get or set output

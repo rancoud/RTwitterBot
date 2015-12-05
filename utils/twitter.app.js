@@ -2,17 +2,17 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
   if(name !== undefined) {
     for (var i = 0; i < confTwitterApp.length; i++) {
       if(confTwitterApp[i].name === name) {
-        log.info('RTBot', 'Use Twitter app %s', name);
+        log.info('RTwitterBot', 'Use Twitter app %s', name);
         return client = new Twitter(confTwitterApp[i]);
       }
     }
-    log.error('RTBot', 'Twitter app %s not found', name);
+    log.error('RTwitterBot', 'Twitter app %s not found', name);
     throw "no app";
   }
   else {
     // no arguments? just give the first twitter app
     if(arrayEndpoints === undefined || !Array.isArray(arrayEndpoints) || arrayEndpoints.length < 1) {
-      log.info('RTBot', 'Use Twitter app %s', confTwitterApp[0].name);
+      log.info('RTwitterBot', 'Use Twitter app %s', confTwitterApp[0].name);
       return client = new Twitter(confTwitterApp[0]);
     }
 
@@ -35,7 +35,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
       }
     }
 
-    log.error('RTBot', 'No twitter app available');
+    log.error('RTwitterBot', 'No twitter app available');
     throw "no app";
   }
 };

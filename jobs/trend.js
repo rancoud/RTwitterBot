@@ -6,7 +6,6 @@ if(options.length === 0) {
 var params = {id: options[0]};
 client.get('trends/place', params, function(error, tweets, response){
   if (!error) {
-    //console.log(util.inspect(tweets, { depth: null }));
     console.log('List Trends of ' + tweets[0].locations[0].name);
     for (var i = 0; i < tweets[0].trends.length; i++) {
       var promoted = '';

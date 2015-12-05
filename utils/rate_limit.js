@@ -27,7 +27,7 @@ global.getRateLimitByName = function saveRateLimit(name, forceRefresh) {
     }
   } catch (e) {
     if(e.errno !== -4058) {
-      log.error('RTBot', 'getRateLimitByName: ' + e.toString());
+      log.error('RTwitterBot', 'getRateLimitByName: ' + e.toString());
       process.exit(1);
     }
   }
