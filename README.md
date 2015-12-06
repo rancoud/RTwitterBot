@@ -35,7 +35,28 @@ Kill all jobs
 node pid.js kill all
 ```
 
+## JOBS
+* hoover [word] -> use stream api to read tweets and download medias in medias folder
+* live [word] -> use stream pi to read tweets
+* onetweet [statuses_id] -> get one tweet with statuses id
+* retweet_all [word] -> use stream api to retweet all on your account
+* timeline [profile_name] -> read last tweet of someone
+* trend [woeid] -> list trend (if no woeid take WorldWide trend)
+* tweet [my tweet to tweet] -> push tweet
+
 ## TODO
-* test models
-* add small job (favorite, list, etc...)
+* test models -> add methods to completly use the json but in function way
+* add small job for each appel
 * get or set output
+* usable in command
+* download retry 3 times after 1 second after if not reachable
+
+## Nota Bene
+JSON informations
+* tweet geo is deprecated
+* user notifications is deprecated
+* possibly_sensitive_appealable is not used
+* no endpoint for poll tweet
+
+## BUG
+use $ in text cause bug -> have to escape it
