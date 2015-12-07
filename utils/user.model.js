@@ -1,32 +1,32 @@
-function User(tweet) {
-  this.tweet = tweet;
+function User(user) {
+  this.user = user;
 }
 
 User.prototype.getId = function () {
-  return this.tweet.user.id_str;
+  return this.user.id_str;
 };
 
 User.prototype.getName = function () {
-  return this.tweet.user.name;
+  return this.user.name;
 };
 
 User.prototype.getScreeName = function () {
-  return this.tweet.user.screen_name;
+  return this.user.screen_name;
 };
 
 User.prototype.getLocation = function () {
-  return this.tweet.user.location;
+  return this.user.location;
 };
 
 User.prototype.getDescription = function () {
-  return this.tweet.user.description;
+  return this.user.description;
 };
 
 User.prototype.getUrl = function () {
   var url = null;
-  for (var i = 0; i < this.tweet.user.entities.url.urls.length; i++) {
-    if(this.tweet.user.url === this.tweet.user.entities.url.urls[i].url) {
-      url = this.tweet.user.entities.url.urls[i].expanded_url;
+  for (var i = 0; i < this.user.entities.url.urls.length; i++) {
+    if(this.user.url === this.user.entities.url.urls[i].url) {
+      url = this.user.entities.url.urls[i].expanded_url;
     }
   }
 
@@ -39,24 +39,24 @@ User.prototype.getUrl = function () {
 
   return {
     url: url,
-    twitter_url: this.tweet.user.url
+    twitter_url: this.user.url
   };
 };
 
 User.prototype.getUrls = function () {
   var urls = [];
 
-  for (var i = 0; i < this.tweet.user.entities.url.urls.length; i++) {
+  for (var i = 0; i < this.user.entities.url.urls.length; i++) {
     urls.push({
-      url: this.tweet.user.entities.url.urls[i].expanded_url,
-      twitter_url: this.tweet.user.entities.url.urls[i].url
+      url: this.user.entities.url.urls[i].expanded_url,
+      twitter_url: this.user.entities.url.urls[i].url
     });
   }
 
-  for (var i = 0; i < this.tweet.user.entities.description.urls.length; i++) {
+  for (var i = 0; i < this.user.entities.description.urls.length; i++) {
     urls.push({
-      url: this.tweet.user.entities.description.urls[i].expanded_url,
-      twitter_url: this.tweet.user.entities.description.urls[i].url
+      url: this.user.entities.description.urls[i].expanded_url,
+      twitter_url: this.user.entities.description.urls[i].url
     });
   }
 
@@ -64,139 +64,139 @@ User.prototype.getUrls = function () {
 };
 
 User.prototype.isProtected = function () {
-  return this.tweet.user.protected;
+  return this.user.protected;
 };
 
 User.prototype.getFollowersCount = function () {
-  return this.tweet.user.followers_count;
+  return this.user.followers_count;
 };
 
 User.prototype.getFriendsCount = function () {
-  return this.tweet.user.friends_count;
+  return this.user.friends_count;
 };
 
 User.prototype.getListedCount = function () {
-  return this.tweet.user.listed_count;
+  return this.user.listed_count;
 };
 
 User.prototype.getCreatedAt = function () {
-  return this.tweet.user.created_at;
+  return this.user.created_at;
 };
 
 User.prototype.getTimestamp = function () {
-  return new Date(this.tweet.user.created_at.replace('+0000 ', '')).getTime();
+  return new Date(this.user.created_at.replace('+0000 ', '')).getTime();
 };
 
 User.prototype.getLocalTimestamp = function () {
-  return new Date(this.tweet.user.created_at).getTime();
+  return new Date(this.user.created_at).getTime();
 };
 
 User.prototype.getFavoritesCount = function () {
-  return this.tweet.user.favourites_count;
+  return this.user.favourites_count;
 };
 
 User.prototype.getUtcOffset = function () {
-  return this.tweet.user.utc_offset;
+  return this.user.utc_offset;
 };
 
 User.prototype.getTimeZone = function () {
-  return this.tweet.user.time_zone;
+  return this.user.time_zone;
 };
 
 User.prototype.hasGeo = function () {
-  return this.tweet.user.geo_enabled;
+  return this.user.geo_enabled;
 };
 
 User.prototype.isVerified = function () {
-  return this.tweet.user.verified;
+  return this.user.verified;
 };
 
 User.prototype.getTweetCount = function () {
-  return this.tweet.user.statuses_count;
+  return this.user.statuses_count;
 };
 
 User.prototype.getLang = function () {
-  return this.tweet.user.lang;
+  return this.user.lang;
 };
 
 User.prototype.isMyLang = function (lang) {
-  return this.tweet.user.lang === lang;
+  return this.user.lang === lang;
 };
 
 User.prototype.hasContributors = function () {
-  return this.tweet.user.contributors_enabled;
+  return this.user.contributors_enabled;
 };
 
 User.prototype.isTranslator = function () {
-  return this.tweet.user.is_translator;
+  return this.user.is_translator;
 };
 
 User.prototype.isTranslationEnabled = function () {
-  return this.tweet.user.is_translation_enabled;
+  return this.user.is_translation_enabled;
 };
 
 User.prototype.getProfileBackgroundColor = function () {
-  return this.tweet.user.profile_background_color;
+  return this.user.profile_background_color;
 };
 
 User.prototype.getProfileBackgroundImageUrl = function () {
-  return this.tweet.user.profile_background_image_url;
+  return this.user.profile_background_image_url;
 };
 
 User.prototype.getProfileBackgroundImageUrl = function () {
-  return this.tweet.user.profile_background_image_url;
+  return this.user.profile_background_image_url;
 };
 
 User.prototype.isProfileBackgroundTile = function () {
-  return this.tweet.user.profile_background_tile;
+  return this.user.profile_background_tile;
 };
 
 User.prototype.getAvatar = function () {
-  return this.tweet.user.profile_image_url;
+  return this.user.profile_image_url;
 };
 
 User.prototype.getBanner = function () {
-  return this.tweet.user.profile_banner_url;
+  return this.user.profile_banner_url;
 };
 
 User.prototype.getProfileLinkColor = function () {
-  return this.tweet.user.profile_link_color;
+  return this.user.profile_link_color;
 };
 
 User.prototype.getProfileSidebarBorderColor = function () {
-  return this.tweet.user.profile_sidebar_border_color;
+  return this.user.profile_sidebar_border_color;
 };
 
 User.prototype.getProfileSidebarFillColor = function () {
-  return this.tweet.user.profile_sidebar_fill_color;
+  return this.user.profile_sidebar_fill_color;
 };
 
 User.prototype.getProfileTextColor = function () {
-  return this.tweet.user.profile_text_color;
+  return this.user.profile_text_color;
 };
 
 User.prototype.hasProfileBackgroundImage = function () {
-  return this.tweet.user.profile_use_background_image;
+  return this.user.profile_use_background_image;
 };
 
 User.prototype.hasExtendedProfile = function () {
-  return this.tweet.user.has_extended_profile;
+  return this.user.has_extended_profile;
 };
 
 User.prototype.hasDefaultProfile = function () {
-  return this.tweet.user.default_profile;
+  return this.user.default_profile;
 };
 
 User.prototype.hasDefaultProfileImage = function () {
-  return this.tweet.user.default_profile_image;
+  return this.user.default_profile_image;
 };
 
 User.prototype.isFollowingMe = function () {
-  return this.tweet.user.following;
+  return this.user.following;
 };
 
 User.prototype.sentFollowRequest = function () {
-  return this.tweet.user.follow_request_sent;
+  return this.user.follow_request_sent;
 };
 
 global.User = User;

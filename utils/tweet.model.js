@@ -58,7 +58,7 @@ Tweet.prototype.getReplyToUser = function () {
 };
 
 Tweet.prototype.getUser = function () {
-  return new User(this.tweet);
+  return new User(this.tweet.user);
 };
 
 Tweet.prototype.getUserJson = function () {

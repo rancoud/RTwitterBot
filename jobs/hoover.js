@@ -2,7 +2,7 @@ var client = getTwitterApp();
 client.stream('statuses/filter', {track: options[0]}, function(stream) {
   stream.on('data', function(tweet) {
     if(tweet.retweeted_status === undefined) {
-      var _user = new User(tweet);
+      var _user = new User(tweet.user);
       var _tweet = new Tweet(tweet);
       console.log(_user.getName().green + ' : ' + tweet.text + '\n');
       var _medias = _tweet.getMedias();

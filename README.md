@@ -44,8 +44,98 @@ node pid.js kill all
 * trend [woeid] -> list trend (if no woeid take WorldWide trend)
 * tweet [my tweet to tweet] -> push tweet
 
+## Tweet Model
+```
+var _tweet = new Tweet(tweet);
+```
+- getCreatedAt()
+- getTimestamp()
+- getLocalTimestamp()
+- getId()
+- getText()
+- getSource()
+- isTruncated()
+- isReply()
+- getReplyToId()
+- getReplyToUserId()
+- getReplyToUserScreenName()
+- getReplyToUser()
+- getUser()
+- getUserJson()
+- getHashtags()
+- getSymbols()
+- getMentions()
+- getMentionsId()
+- getMentionsScreenName()
+- getMentionsName()
+- getUrls()
+- getMedias()
+- getCoordinates()
+- getPlace()
+- getPlaceName()
+- getPlaceFullName()
+- getCountry()
+- getCountryCode()
+- getContributors()
+- isRetweet()
+- getRetweet()
+- getRetweetJson()
+- getRetweetCount()
+- getFavoriteCount()
+- isFavoritedByMe()
+- isRetweetedByMe()
+- isSensitive()
+- getLang()
+- isMyLang()
+- getTwitterUrl()
+
+## User Model
+```
+var _user = new User(tweet.user);
+```
+- getId()
+- getName()
+- getScreeName()
+- getLocation()
+- getDescription()
+- getUrl()
+- getUrls()
+- isProtected()
+- getFollowersCount()
+- getFriendsCount()
+- getListedCount()
+- getAvatar()
+- getCreatedAt()
+- getTimestamp()
+- getLocalTimestamp()
+- getFavoritesCount()
+- getUtcOffset()
+- getTimeZone()
+- hasGeo()
+- isVerified()
+- getTweetCount()
+- getLang()
+- isMyLang()
+- hasContributors()
+- isTranslator()
+- isTranslationEnabled()
+- getProfileBackgroundColor()
+- getProfileBackgroundImageUrl()
+- isProfileBackgroundTile()
+- getAvatar()
+- getBanner()
+- getProfileLinkColor()
+- getProfileSidebarBorderColor()
+- getProfileSidebarFillColor()
+- getProfileTextColor()
+- hasProfileBackgroundImage()
+- hasExtendedProfile()
+- hasDefaultProfile()
+- hasDefaultProfileImage()
+- isFollowingMe()
+- sentFollowRequest()
+
 ## TODO
-* test models -> add methods to completly use the json but in function way
 * add small job for each appel
 * get or set output
 * usable in command
@@ -59,4 +149,5 @@ JSON informations
 * no endpoint for poll tweet
 
 ## BUG
-use $ in text cause bug -> have to escape it
+use $ in options cause bug -> have to escape it
+some medias is in 404 (too quick to donwload)

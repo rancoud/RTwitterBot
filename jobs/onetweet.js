@@ -4,11 +4,12 @@ client.get('statuses/show/' + options[0], {},  function(error, tweet, response) 
     logTwitterError(error);
     throw error;
   }
+
   console.log(util.inspect(tweet,{depth:null}));
 
   var t = new Tweet(tweet);
 
-  console.log("getCreatedAt: " + t.getCreatedAt());
+  /*console.log("getCreatedAt: " + t.getCreatedAt());
   console.log("getTimestamp: " + t.getTimestamp());
   console.log("getLocalTimestamp: " + t.getLocalTimestamp());
   console.log("getId: " + t.getId());
@@ -59,10 +60,10 @@ client.get('statuses/show/' + options[0], {},  function(error, tweet, response) 
   console.log("getLang: " + t.getLang());
   console.log("isMyLang: " + t.isMyLang('fr'));
 
-  console.log("getTwitterUrl: " + t.getTwitterUrl());
+  console.log("getTwitterUrl: " + t.getTwitterUrl());*/
 
-  var u = new User(tweet);
-  console.log("getId: " + u.getId());
+  var u = new User(tweet.user);
+  /*console.log("getId: " + u.getId());
   console.log("getName: " + u.getName());
   console.log("getScreeName: " + u.getScreeName());
   console.log("getLocation: " + u.getLocation());
@@ -114,5 +115,5 @@ client.get('statuses/show/' + options[0], {},  function(error, tweet, response) 
   console.log("hasDefaultProfileImage: " + u.hasDefaultProfileImage());
 
   console.log("isFollowingMe: " + u.isFollowingMe());
-  console.log("sentFollowRequest: " + u.sentFollowRequest());
+  console.log("sentFollowRequest: " + u.sentFollowRequest());*/
 });
