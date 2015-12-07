@@ -139,7 +139,6 @@ var _user = new User(tweet.user);
 * add small job for each appel
 * get or set output
 * usable in command
-* download retry 3 times after 1 second after if not reachable
 
 ## Nota Bene
 JSON informations
@@ -147,7 +146,7 @@ JSON informations
 * user notifications is deprecated
 * possibly_sensitive_appealable is not used
 * no endpoint for poll tweet
+* if you want to tweet symbol, escape $ like this \$MYSYMBOL
 
 ## BUG
-use $ in options cause bug -> have to escape it
 some medias is in 404 (too quick to donwload)

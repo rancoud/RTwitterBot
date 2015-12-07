@@ -31,7 +31,6 @@ process.argv.forEach(function (val, index, array) {
   if(index > 2) {
     options.push(val);
   }
-
 });
 
 // if no job kill process

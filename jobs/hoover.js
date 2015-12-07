@@ -13,6 +13,7 @@ client.stream('statuses/filter', {track: options[0]}, function(stream) {
   });
 
   stream.on('error', function(error) {
+    log.error('RTwitterBot', 'Stream Error');
     console.log(error);
   });
 });
