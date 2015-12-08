@@ -4,7 +4,7 @@ Bot for twitter
 ## Setup
 1. Create Twitter application
 2. Rename conf.twitter.app.sample.js to conf.twitter.app.js
-3. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret**
+3. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret** (**callback_url** is for user authentification)
 4. Create your job in folder jobs
 
 ## Example
@@ -135,8 +135,22 @@ var _user = new User(tweet.user);
 - isFollowingMe()
 - sentFollowRequest()
 
+## Twitter User Authentification
+Getting access token for external user with an app.  
+```
+node save_oauth myapp
+```
+*(if app name argument is not provided the first one in conf is picked)*  
+A server will be up at 127.0.0.1 on port 3000.  
+When callback is done a file is created in oauth_access_cache like this: screen_name.tok  
+It will contain the app name, access token and access token secret.  
+
 ## TODO
-* add small job for each appel
+* do oauth -> extend twitter.js
+* add easy function to twitter.js
+* save account name + token + twitter app in file
+* add options to use a special account
+* add small job for each endpoint
 * get or set output
 * usable in command
 
@@ -147,6 +161,3 @@ JSON informations
 * possibly_sensitive_appealable is not used
 * no endpoint for poll tweet
 * if you want to tweet symbol, escape $ like this \$MYSYMBOL
-
-## BUG
-some medias is in 404 (too quick to donwload)

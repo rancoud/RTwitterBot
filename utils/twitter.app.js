@@ -3,7 +3,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
     for (var i = 0; i < confTwitterApp.length; i++) {
       if(confTwitterApp[i].name === name) {
         log.info('RTwitterBot', 'Use Twitter app %s', name);
-        return client = new Twitter(confTwitterApp[i]);
+        return client = new RTwitter(confTwitterApp[i]);
       }
     }
     log.error('RTwitterBot', 'Twitter app %s not found', name);
@@ -13,7 +13,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
     // no arguments? just give the first twitter app
     if(arrayEndpoints === undefined || !Array.isArray(arrayEndpoints) || arrayEndpoints.length < 1) {
       log.info('RTwitterBot', 'Use Twitter app %s', confTwitterApp[0].name);
-      return client = new Twitter(confTwitterApp[0]);
+      return client = new RTwitter(confTwitterApp[0]);
     }
 
     // for each twitter app we read rate limits using endpoints
@@ -31,7 +31,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
 
       // if we have a full matches we can use this twitter app
       if(matches[i] === arrayEndpoints.length) {
-        return client = new Twitter(confTwitterApp[i]);
+        return client = new RTwitter(confTwitterApp[i]);
       }
     }
 

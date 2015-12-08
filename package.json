@@ -19,6 +19,7 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "npmlog": "^2.0.0",
+    "oauth": "^0.9.14",
     "twitter": "^1.2.5"
   }
 }

@@ -7,3 +7,5 @@ medias/*
 !medias/placeholder
 pids/*
 !pids/placeholder
+oauth_access_cache/*
+!oauth_access_cache/placeholder

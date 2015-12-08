@@ -41,7 +41,6 @@ if(job.length < 1) {
 
 // get twitter app configurations and Twitter module
 confTwitterApp = require('./conf.twitter.app.js');
-Twitter = require('twitter');
 
 // check confTwitterApp > not empty AND no duplicate name
 if(confTwitterApp.length === 0) {
