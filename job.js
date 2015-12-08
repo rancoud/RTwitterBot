@@ -60,7 +60,7 @@ for (var i = 0; i < confTwitterApp.length; i++) {
   var _json = getRateLimitByName(confTwitterApp[i].name);
   if(_json === null) {
     log.info('RTwitterBot', 'Update rate_limit_cache json for %s', confTwitterApp[i].name);
-    getClientRateLimit(new Twitter(confTwitterApp[i]), function(name) {
+    getClientRateLimit(new RTwitter(confTwitterApp[i]), function(name) {
       return function(json) {
         saveRateLimitByName(name, JSON.stringify(json));
 
