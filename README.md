@@ -10,7 +10,7 @@ Bot for twitter
 ## Example
 Once your twitter application created you can run the read job.
 ```
-node job.js read "livecodingtv"
+node job timeline "livecodingtv"
 ```
 
 ## How to write job
@@ -24,15 +24,15 @@ node job.js read "livecodingtv"
 ## PID watcher and killer
 Jobs'list running (pid + job + options)
 ```
-node pid.js
+node pid
 ```
 Kill a job
 ```
-node pid.js kill {pidId}
+node pid kill {pidId}
 ```
 Kill all jobs
 ```
-node pid.js kill all
+node pid kill all
 ```
 
 ## JOBS
@@ -138,16 +138,25 @@ var _user = new User(tweet.user);
 ## Twitter User Authentification
 Getting access token for external user with an app.  
 ```
-node save_oauth myapp
+node save_oauth "myapp"
 ```
 *(if app name argument is not provided the first one in conf is picked)*  
 A server will be up at 127.0.0.1 on port 3000.  
 When callback is done a file is created in oauth_access_cache like this: screen_name.tok  
 It will contain the app name, access token and access token secret.  
 
+## Optionnal arguments
+```
+// user to use (require getting access token)
+-u OR --user "myuser"
+// twitter app to use
+-a OR --app "myapp"
+// file to upload
+-f OR --file "/path/to/file"
+```
+**for user argument use in lower case the screen name of the account**  
+
 ## TODO
-* test oauth
-* add options to use a special account or twitter app
 * add small job for each endpoint (add model if necessary)
 * npm install copy the conf.twitter.app.js
 * refactoring

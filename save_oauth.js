@@ -10,6 +10,7 @@ fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
 });
 
 // init variables
+globalUser = globalApp = null;
 options = [];
 authData = {};
 
@@ -23,6 +24,25 @@ process.argv.forEach(function (val, index, array) {
     options.push(val);
   }
 });
+
+// get general options
+var _tmpOptions = [];
+for (var i = 0, max = options.length; i < max; i++) {
+  if(options[i] === '-a' || options[i] === '--app') {
+    i++;
+    if(i < max) {
+      globalApp = options[i];
+    }
+    else {
+      log.error('RTwitterBot', 'app argument missing!');
+      return;
+    }
+  }
+  else {
+    _tmpOptions.push(options[i]);
+  }
+}
+options = _tmpOptions;
 
 // get twitter app configurations
 confTwitterApp = require('./conf.twitter.app.js');
@@ -80,7 +100,7 @@ server = http.createServer(function (req, res) {
           }
 
           // write file in oauth_access_cache
-          var fileToken = './oauth_access_cache/' + tweet.screen_name + '.tok';
+          var fileToken = './oauth_access_cache/' + tweet.screen_name.toLowerCase() + '.tok';
           var accessTokenFileStats = null;
           var accessTokenJson = [];
           var found = false;
@@ -88,7 +108,7 @@ server = http.createServer(function (req, res) {
           try {
             accessTokenFileStats = fs.statSync(fileToken);
           } catch (e) {
-            console.log(e.toString());
+            //
           }
 
           if(accessTokenFileStats !== null) {
@@ -97,7 +117,7 @@ server = http.createServer(function (req, res) {
             for (var i = 0; i < accessTokenJson.length; i++) {
               if(accessTokenJson[i].app_name === accessToken.app_name) {
                 found = true;
-                log.info('RTwitterBot SaveOauth', 'Update access token for user %s for app %s', tweet.screen_name, accessToken.app_name);
+                log.info('RTwitterBot SaveOauth', 'Update access token for user %s for app %s', tweet.screen_name.toLowerCase(), accessToken.app_name);
                 accessTokenJson[i] = accessToken;
                 break;
               }
@@ -105,7 +125,7 @@ server = http.createServer(function (req, res) {
           }
 
           if(accessTokenFileStats === null || !found) {
-            log.info('RTwitterBot SaveOauth', 'Add access token user %s for app %s', tweet.screen_name, accessToken.app_name);
+            log.info('RTwitterBot SaveOauth', 'Add access token user %s for app %s', tweet.screen_name.toLowerCase(), accessToken.app_name);
             accessTokenJson.push(accessToken);
           }
 

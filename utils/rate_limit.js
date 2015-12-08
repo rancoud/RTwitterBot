@@ -26,10 +26,7 @@ global.getRateLimitByName = function saveRateLimit(name, forceRefresh) {
       rateLimitJson = JSON.parse(rateLimitJson);
     }
   } catch (e) {
-    if(e.errno !== -4058) {
-      log.error('RTwitterBot', 'getRateLimitByName: ' + e.toString());
-      process.exit(1);
-    }
+    //
   }
 
   return rateLimitJson;

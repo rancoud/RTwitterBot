@@ -10,7 +10,7 @@ fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
 });
 
 // init variables
-globalUser = globalApp = null;
+globalUser = globalApp = globalFile = null;
 job = '';
 options = [];
 
@@ -20,7 +20,11 @@ log.info('RTwitterBot', 'Init');
 process.on('exit', function() {
   log.info('RTwitterBot', 'End');
   // remove process pid
-  fs.unlinkSync('./pids/' + process.pid + '.pid');
+  try {
+    fs.unlinkSync('./pids/' + process.pid + '.pid');
+  } catch (e) {
+    //
+  }
 });
 
 // get job + options
@@ -35,17 +39,43 @@ process.argv.forEach(function (val, index, array) {
 });
 
 // get general options
-// -u --user "myuser"
-// -a --app "myapp"
-for (var i = 0; i < options.length; i++) {
-  if(options[i] === '-u' || options[i] === '-user') {
+var _tmpOptions = [];
+for (var i = 0, max = options.length; i < max; i++) {
+  if(options[i] === '-u' || options[i] === '--user') {
     i++;
+    if(i < max) {
+      globalUser = options[i].toLowerCase();
+    }
+    else {
+      log.error('RTwitterBot', 'user argument missing!');
+      return;
+    }
   }
-
-  if(options[i] === '-a' || options[i] === '-app') {
+  else if(options[i] === '-a' || options[i] === '--app') {
     i++;
+    if(i < max) {
+      globalApp = options[i];
+    }
+    else {
+      log.error('RTwitterBot', 'app argument missing!');
+      return;
+    }
+  }
+  else if(options[i] === '-f' || options[i] === '--file') {
+    i++;
+    if(i < max) {
+      globalFile = options[i];
+    }
+    else {
+      log.error('RTwitterBot', 'file argument missing!');
+      return;
+    }
+  }
+  else {
+    _tmpOptions.push(options[i]);
   }
 }
+options = _tmpOptions;
 
 // if no job kill process
 if(job.length < 1) {

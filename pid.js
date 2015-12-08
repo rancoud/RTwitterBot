@@ -54,9 +54,14 @@ listPids = _temp;
 
 // show list pids
 if(options.length < 1) {
-  console.log('List of pids:');
-  for (var i = 0; i < listPids.length; i++) {
-    console.log(listPids[i].pid + ' : ' + listPids[i].content);
+  if(listPids.length > 0) {
+    console.log('List of pids:');
+    for (var i = 0; i < listPids.length; i++) {
+      console.log(listPids[i].pid + ' : ' + listPids[i].content);
+    }
+  }
+  else {
+    console.log('No job running');
   }
 }
 
