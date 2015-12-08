@@ -146,13 +146,12 @@ When callback is done a file is created in oauth_access_cache like this: screen_
 It will contain the app name, access token and access token secret.  
 
 ## TODO
-* do oauth -> extend twitter.js
-* add easy function to twitter.js
-* save account name + token + twitter app in file
-* add options to use a special account
-* add small job for each endpoint
-* get or set output
-* usable in command
+* test oauth
+* add options to use a special account or twitter app
+* add small job for each endpoint (add model if necessary)
+* npm install copy the conf.twitter.app.js
+* refactoring
+* renaming
 
 ## Nota Bene
 JSON informations

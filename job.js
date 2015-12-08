@@ -10,6 +10,7 @@ fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
 });
 
 // init variables
+globalUser = globalApp = null;
 job = '';
 options = [];
 
@@ -32,6 +33,19 @@ process.argv.forEach(function (val, index, array) {
     options.push(val);
   }
 });
+
+// get general options
+// -u --user "myuser"
+// -a --app "myapp"
+for (var i = 0; i < options.length; i++) {
+  if(options[i] === '-u' || options[i] === '-user') {
+    i++;
+  }
+
+  if(options[i] === '-a' || options[i] === '-app') {
+    i++;
+  }
+}
 
 // if no job kill process
 if(job.length < 1) {
