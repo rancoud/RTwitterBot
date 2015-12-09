@@ -17,12 +17,12 @@ global.getRateLimitByName = function saveRateLimit(name, forceRefresh) {
   var forceRefresh = forceRefresh || true;
 
   try {
-    var rateLimitFileStats = fs.statSync('./rate_limit_cache/' + name + '.json');
+    var rateLimitFileStats = fs.statSync(__dirname + '/../rate_limit_cache/' + name + '.json');
     var _date = new Date();
     _date.setSeconds(_date.getSeconds() - expirationFileTime);
     // if file is still fresh, we can read and return it
     if(rateLimitFileStats.mtime.getTime() > _date.getTime() || forceRefresh === false) {
-      rateLimitJson = fs.readFileSync('./rate_limit_cache/' + name + '.json', 'utf8');
+      rateLimitJson = fs.readFileSync(__dirname + '/../rate_limit_cache/' + name + '.json', 'utf8');
       rateLimitJson = JSON.parse(rateLimitJson);
     }
   } catch (e) {
@@ -33,5 +33,5 @@ global.getRateLimitByName = function saveRateLimit(name, forceRefresh) {
 };
 
 global.saveRateLimitByName = function saveRateLimit(name, json) {
-  fs.writeFileSync('./rate_limit_cache/' + name + '.json', json, 'utf8');
+  fs.writeFileSync(__dirname + '/../rate_limit_cache/' + name + '.json', json, 'utf8');
 };
