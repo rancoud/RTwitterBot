@@ -1,5 +1,5 @@
 # RTwitterBot
-Bot for twitter
+Bot for Twitter
 
 ## Setup
 1. Create Twitter application
