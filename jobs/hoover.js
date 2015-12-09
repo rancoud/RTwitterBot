@@ -7,7 +7,7 @@ client.stream('statuses/filter', {track: options[0]}, function(stream) {
       console.log(_user.getName().green + ' : ' + tweet.text + '\n');
       var _medias = _tweet.getMedias();
       for (var i = 0; i < _medias.length; i++) {
-        download(_medias[i].url, './medias/' + _medias[i].name);
+        download(_medias[i].url, __dirname + '/../medias/' + _medias[i].name);
       }
     }
   });

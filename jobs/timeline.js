@@ -7,7 +7,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response){
       var t = new Tweet(tweets[i]);
       var _medias = t.getMedias();
       for (var j = 0; j < _medias.length; j++) {
-        download(_medias[j].url, './medias/' + _medias[j].name);
+        download(_medias[j].url, __dirname + '/../medias/' + _medias[j].name);
       }
     }
   }

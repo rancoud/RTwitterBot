@@ -5,7 +5,7 @@ fs = require('fs');
 fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
-    require('./utils/' + file);
+    require(__dirname + '/utils/' + file);
   }
 });
 
@@ -45,7 +45,7 @@ for (var i = 0, max = options.length; i < max; i++) {
 options = _tmpOptions;
 
 // get twitter app configurations
-confTwitterApp = require('./conf.twitter.app.js');
+confTwitterApp = require(__dirname + '/conf.twitter.app.js');
 
 // check confTwitterApp > not empty AND no duplicate name
 if(confTwitterApp.length === 0) {
@@ -100,7 +100,7 @@ server = http.createServer(function (req, res) {
           }
 
           // write file in oauth_access_cache
-          var fileToken = './oauth_access_cache/' + tweet.screen_name.toLowerCase() + '.tok';
+          var fileToken = __dirname + '/oauth_access_cache/' + tweet.screen_name.toLowerCase() + '.tok';
           var accessTokenFileStats = null;
           var accessTokenJson = [];
           var found = false;

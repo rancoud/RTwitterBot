@@ -159,6 +159,7 @@ It will contain the app name, access token and access token secret.
 ## TODO
 * add small job for each endpoint (add model if necessary)
 * npm install copy the conf.twitter.app.js
+* add video on "How to create application in Twitter"
 * refactoring
 * renaming
 
