@@ -156,12 +156,37 @@ It will contain the app name, access token and access token secret.
 ```
 **for user argument use in lower case the screen name of the account**  
 
+## Documentation Twitter API
+List of endpoints (GET and POST)
+```
+node doc
+```
+List of endpoints (GET only)
+```
+node doc get
+```
+List of endpoints (POST only)
+```
+node doc post
+```
+Endpoint details
+```
+node doc "statuses/home_timeline"
+```
+List of parameters
+```
+node doc parameters
+```
+Test endpoint (GET and POST)
+```
+node doc test "statuses/home_timeline"
+```
+
 ## TODO
-* add small job for each endpoint (add model if necessary)
+* complete doc.js
+* add search in doc (use arguments for url, description search)
 * npm install copy the conf.twitter.app.js
 * add video on "How to create application in Twitter"
-* refactoring
-* renaming
 
 ## Nota Bene
 JSON informations
