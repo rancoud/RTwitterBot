@@ -9,13 +9,53 @@ process.argv.forEach(function (val, index, array) {
 });
 
 function displayEndpoint(endpoint) {
-  console.log(endpoint.method.toUpperCase() + ' ' + endpoint.url + ' -> ' + endpoint.description);
+  console.log(endpoint.method.toUpperCase() + ' ' + endpoint.url + ' ' + endpoint.description);
 }
 
 function displayDetailsEndpoint(endpoint) {
-  console.log(endpoint.method.toUpperCase() + ' ' + endpoint.url + ' -> ' + endpoint.description);
-  for (var i = 0; i < endpoint.parameters.length; i++) {
-    console.log(endpoint.parameters[i]);
+  console.log(endpoint.method.toUpperCase() + ' ' + endpoint.url + "\n\nDescription:\n" + endpoint.description);
+
+  displayParametersRequired(endpoint.parameters.required);
+  displayParametersOptionnal(endpoint.parameters.optionnal);
+}
+
+function displayParametersRequired(parameters) {
+  if(parameters.length === 0) {
+    return;
+  }
+
+  console.log("\n"+'Parameters required:');
+  for (var i = 0; i < parameters.length; i++) {
+    if(typeof parameters[i] === 'string') {
+      for (var j = 0; j < api.parameters.length; j++) {
+        if(parameters[i] === api.parameters[j].name) {
+          displayParameters(api.parameters[j]);
+        }
+      }
+    }
+    else {
+      displayParameters(parameters[i]);
+    }
+  }
+}
+
+function displayParametersOptionnal(parameters) {
+  if(parameters.length === 0) {
+    return;
+  }
+
+  console.log("\n"+'Parameters optionnal:');
+  for (var i = 0; i < parameters.length; i++) {
+    if(typeof parameters[i] === 'string') {
+      for (var j = 0; j < api.parameters.length; j++) {
+        if(parameters[i] === api.parameters[j].name) {
+          displayParameters(api.parameters[j]);
+        }
+      }
+    }
+    else {
+      displayParameters(parameters[i]);
+    }
   }
 }
 
@@ -31,16 +71,36 @@ if(options.length < 1) {
 }
 
 if(options[0] === 'get') {
-  for (var i = 0; i < api.endpoints.length; i++) {
-    if(api.endpoints[i].method === 'get') {
-      displayEndpoint(api.endpoints[i]);
+  if(options.length < 2) {
+    for (var i = 0; i < api.endpoints.length; i++) {
+      if(api.endpoints[i].method === 'get') {
+        displayEndpoint(api.endpoints[i]);
+      }
+    }
+  }
+  else {
+    for (var i = 0; i < api.endpoints.length; i++) {
+      if(api.endpoints[i].url === options[1]) {
+        displayDetailsEndpoint(api.endpoints[i]);
+        return;
+      }
     }
   }
 }
 else if(options[0] === 'post') {
-  for (var i = 0; i < api.endpoints.length; i++) {
-    if(api.endpoints[i].method === 'post') {
-      displayEndpoint(api.endpoints[i]);
+  if(options.length < 2) {
+    for (var i = 0; i < api.endpoints.length; i++) {
+      if(api.endpoints[i].method === 'post') {
+        displayEndpoint(api.endpoints[i]);
+      }
+    }
+  }
+  else {
+    for (var i = 0; i < api.endpoints.length; i++) {
+      if(api.endpoints[i].url === options[1]) {
+        displayDetailsEndpoint(api.endpoints[i]);
+        return;
+      }
     }
   }
 }
