@@ -74,7 +74,7 @@ Twitter.prototype.getAppName = function () {
 
 Twitter.prototype.setAccessTokenByUser = function (screenName) {
   try {
-    var tokenJson = JSON.parse(fs.readFileSync('./oauth_access_cache/' + screenName + '.tok'));
+    var tokenJson = JSON.parse(fs.readFileSync(__dirname + '/../oauth_access_cache/' + screenName + '.tok'));
     for (var i = 0; i < tokenJson.length; i++) {
       if(tokenJson[i].app_name === this.getAppName()) {
         this.setAccessToken(tokenJson[i].access_token_key, tokenJson[i].access_token_secret);
