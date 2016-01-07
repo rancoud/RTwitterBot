@@ -13,6 +13,7 @@ fs.readdirSync(__dirname + '/utils/').forEach(function(file) {
 globalUser = globalApp = globalFile = null;
 job = '';
 options = [];
+botDirname = __dirname;
 
 // init logger
 log = require('npmlog');
@@ -157,9 +158,21 @@ function doJob() {
         }
       }
 
-      if(found === false) {
-        log.error('RTwitterBot', 'Job %s not found', job);
+      if(found === true) {
+        return;
       }
+
+      try {
+        fs.readFileSync(job, 'utf8');
+      } catch (e) {
+        log.error('RTwitterBot', e);
+        log.error('RTwitterBot', 'Job %s not found', job);
+        return;
+      }
+
+      fs.writeFileSync(__dirname + '/pids/' + process.pid + '.pid', job + ' ' + options.join(' '), 'utf-8');
+      log.info('RTwitterBot', 'Load job file: %s', job);
+      require(job);
     });
 
   });
