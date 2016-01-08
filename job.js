@@ -165,7 +165,6 @@ function doJob() {
       try {
         fs.readFileSync(job, 'utf8');
       } catch (e) {
-        log.error('RTwitterBot', e);
         log.error('RTwitterBot', 'Job %s not found', job);
         return;
       }
