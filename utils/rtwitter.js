@@ -83,11 +83,11 @@ Twitter.prototype.setAccessTokenByUser = function (screenName) {
     }
   } catch (e) {
     log.error('RTwitterBot', 'Access token not found for user %s', screenName);
-    throw "Access token not found for user " + screenName;
+    process.exit(1);
   }
 
-  log.error('RTwitterBot', 'Access token not found for user %s', screenName);
-  throw "Access token not found for user " + screenName;
+  log.error('RTwitterBot', 'Access token user %s not usable with app %s', screenName, this.getAppName());
+  process.exit(1);
 };
 
 // source http://stackoverflow.com/questions/32836850/how-do-you-upload-a-chunked-video-to-twitter-using-node/

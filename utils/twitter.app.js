@@ -15,7 +15,7 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
       }
     }
     log.error('RTwitterBot', 'Twitter app %s not found', name);
-    throw "no app";
+    process.exit(1);
   }
   else {
     // no arguments? just give the first twitter app
@@ -52,6 +52,6 @@ global.getTwitterApp = function getTwitterApp(name, arrayEndpoints) {
     }
 
     log.error('RTwitterBot', 'No twitter app available');
-    throw "no app";
+    process.exit(1);
   }
 };
