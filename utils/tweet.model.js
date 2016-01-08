@@ -139,6 +139,16 @@ Tweet.prototype.getHashtags = function () {
   return hashtags;
 };
 
+Tweet.prototype.hasHashtag = function (hashtag) {
+  for (var i = 0; i < this.tweet.entities.hashtags.length; i++) {
+    if(this.tweet.entities.hashtags[i].text === hashtag) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
 Tweet.prototype.getSymbols = function () {
   var symbols = [];
 
