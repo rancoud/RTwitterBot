@@ -48,6 +48,7 @@ node pid kill all
 ```
 var _tweet = new Tweet(tweet);
 ```
+- getJson()
 - getCreatedAt()
 - getTimestamp()
 - getLocalTimestamp()

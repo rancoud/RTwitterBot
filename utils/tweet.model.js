@@ -2,6 +2,10 @@ function Tweet(tweet) {
   this.tweet = tweet;
 }
 
+Tweet.prototype.getJson = function () {
+  return this.tweet;
+};
+
 Tweet.prototype.getCreatedAt = function () {
   return this.tweet.created_at;
 };
