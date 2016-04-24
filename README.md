@@ -2,14 +2,14 @@
 Bot for Twitter
 
 ## Setup
-0. Donwload Projet / unzip / go to directory / ```npm install```
-1. Create Twitter application
-2. Rename conf.twitter.app.sample.js to conf.twitter.app.js
-3. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret** (**callback_url** is for user authentification)
-4. Create your job in folder jobs
+1. Create Twitter application at [https://apps.twitter.com/](https://apps.twitter.com/)
+2. Download Project / unzip / go to directory
+3. Install dependances with ```npm install```
+4. Rename conf.twitter.app.sample.js to conf.twitter.app.js
+5. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret** (**callback_url** is for user authentification)
 
 ## Example
-Once your twitter application created you can run the read job.
+Once your twitter application created you can run the read job (you have to be in the project folder for launching it)
 ```
 node job timeline "livecodingtv"
 ```
