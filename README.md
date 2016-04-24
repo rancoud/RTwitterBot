@@ -2,6 +2,7 @@
 Bot for Twitter
 
 ## Setup
+0. Donwload Projet / unzip / go to directory / ```npm install```
 1. Create Twitter application
 2. Rename conf.twitter.app.sample.js to conf.twitter.app.js
 3. Fill the file with **name** , **consumer_key** , **consumer_secret** , **access_token_key** , **access_token_secret** (**callback_url** is for user authentification)
