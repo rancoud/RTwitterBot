@@ -10,3 +10,5 @@ pids/*
 !pids/placeholder
 oauth_access_cache/*
 !oauth_access_cache/placeholder
+.idea/*
+RTwitterBot.iml
